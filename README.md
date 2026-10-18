@@ -38,6 +38,21 @@ billetes:
 10000=5
 20000=5
 
+ingredientes gastados por cada bebida:
+
+tinto: 0,2l de agua y 10g café, un vaso
+cafe con leche: 0,2l de agua, 10 g de café, 10g de leche en polvo.
+té: 0,2l de agua y 1 bolsita de café
+milo: 0,2l de agua, 10g de leche, 20g de milo.
+chocolate: 0,2l de agua, 10g de leche, 20g de chocolate.
+
+si agrega azucar seran 0,5 gramos.
+
+
+el agua y los vasos tienen la misma cantidad para cada bebida.
+
+
+
 compra (let)
 bebida por pedir
 saldo ingresado
