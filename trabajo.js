@@ -19,3 +19,24 @@ const billete2000 = 2000;
 const billete5000 = 5000;
 const billete10000 = 10000;
 const billete20000 = 20000;
+
+/* Inventario de monedas y billetes */
+
+let cantidadMonedas100 = 20;
+let cantidadMonedas200 = 20;
+let cantidadMonedas500 = 20;
+let cantidadMonedas1000 = 20;
+let cantidadBilletes2000 = 10;
+let cantidadBilletes5000 = 10;
+let cantidadBilletes10000 = 5;
+let cantidadBilletes20000 = 5;
+
+/* Precio de productos  */
+
+const precioTinto = 1000;
+const precioCafeLeche = 2000;
+const precioTe = 1500;
+const precioMilo = 2500;
+const precioChocolate = 2500;
+
+
