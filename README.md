@@ -1,11 +1,19 @@
 entradas:
-café
-saldo
-leche 
-agua
-vaso
-azúcar
-té
+bebidas
+(café, tnito, milo, chocolate, té)
+azucar (1 o 0)
+Dinero: (dinero ingresado)
+
+inventario:
+Agua (1000L (infifnito))
+Café 2kg
+Leche en polvo 2kg
+Milo 1.5kg
+Chocolate 1.kg
+Té (100 blositas)
+Azucar 2kg
+Vasos 100unidades
+
 inventario de monedas y billetes
 
 Constantes:
@@ -16,3 +24,4 @@ agua
 
 let: 
 azucar, cafe, leche, te
+
