@@ -39,4 +39,40 @@ const precioTe = 1500;
 const precioMilo = 2500;
 const precioChocolate = 2500;
 
+/* VARIABLES DE LA COMPRA */
 
+let bebida = "";
+let saldo = 0;
+let cambio = 0;
+let azucarSiNo = "";
+let cantidadAzucar = 0;
+let precioSeleccionado = 0;
+
+/* CANTIDADES DE INGREDIENTES POR BEBIDA */
+
+/* Agua: todas las bebidas consumen la misma cantidad */
+const aguaPorBebida = 0.2; /* Litros */
+
+// TINTO
+const cafeTinto = 10; /* Gramos */
+
+// CAFE CON LECHE
+const cafeCafeLeche = 10; /* Gramos */
+const lecheCafeLeche = 10; /* Gramos */
+
+// TE
+const bolsitasTe = 1; /* Bolsitas */
+
+// MILO
+const lecheMilo = 10; /* Gramos */
+const cantidadMilo = 20; /* Gramos */
+
+// CHOCOLATE CALIENTE
+const lecheChocolate = 10; /* Gramos */
+const cantidadChocolate = 20; /* Gramos */
+
+// AZUCAR
+const azucarPorBebida = 5; /* Gramos si responde que sí */
+
+// VASOS
+const vasosPorBebida = 1; /* Unidades */
