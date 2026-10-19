@@ -53,26 +53,65 @@ let precioSeleccionado = 0;
 /* Agua: todas las bebidas consumen la misma cantidad */
 const aguaPorBebida = 0.2; /* Litros */
 
-// TINTO
+/* Tinto */
 const cafeTinto = 10; /* Gramos */
 
-// CAFE CON LECHE
+/* Cafe con leche */
 const cafeCafeLeche = 10; /* Gramos */
 const lecheCafeLeche = 10; /* Gramos */
 
-// TE
+/* Te */
 const bolsitasTe = 1; /* Bolsitas */
 
-// MILO
+/* Milo */
 const lecheMilo = 10; /* Gramos */
 const cantidadMilo = 20; /* Gramos */
 
-// CHOCOLATE CALIENTE
+/* Chocolate */
 const lecheChocolate = 10; /* Gramos */
 const cantidadChocolate = 20; /* Gramos */
 
-// AZUCAR
+/* Azucar */
 const azucarPorBebida = 5; /* Gramos si responde que sí */
 
-// VASOS
+/* Vasos */
 const vasosPorBebida = 1; /* Unidades */
+
+
+/*preparar un tinto*/
+
+cafe = cafe - cafeTinto;
+agua = agua - aguaPorBebida;
+vasos = vasos - vasosPorBebida;
+
+/* preparar cafe con leche */
+
+cafe = cafe - cafeCafeLeche;
+leche = leche - lecheCafeLeche;
+agua = agua - aguaPorBebida;
+vasos = vasos - vasosPorBebida;
+
+/* preparar un te */
+
+te = te - bolsitasTe;
+agua = agua - aguaPorBebida;
+vasos = vasos - vasosPorBebida;
+
+/* preparar un Milo */
+
+milo = milo - cantidadMilo;
+leche = leche - lecheMilo;
+agua = agua - aguaPorBebida;
+vasos = vasos - vasosPorBebida;
+
+/* preparar un chocolate caliente */
+
+chocolate = chocolate - cantidadChocolate;
+leche = leche - lecheChocolate;
+agua = agua - aguaPorBebida;
+vasos = vasos - vasosPorBebida;
+
+/* descontar el azucar de una bebida */
+
+cantidadAzucar = azucarPorBebida;
+azucar = azucar - cantidadAzucar;
