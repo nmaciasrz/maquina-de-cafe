@@ -118,20 +118,57 @@ azucar = azucar - cantidadAzucar;
 
 
 
-/* seleccion de bebida */
+/* seleccion de bebida y verificar si hay ingredientes */
 
-if (bebida == 1) {precioSeleccionado=precioTinto;
+if (bebida ==1)  {precioSeleccionado=precioTinto;
     console.log ("Seleccionaste un tinto")
-} 
-else if (bebida == 2) {precioSeleccionado=precioCafeLeche;
+
+    if (cafe >= cafeTinto && agua >= aguaPorBebida && vasos >= vasosPorBebida) 
+        {
+        console.log("Hay ingredientes para preparar tinto");
+    }
+    else {
+        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+    }
+}
+else if (bebida ==2) {precioSeleccionado=precioCafeLeche;
     console.log ("Seleccionaste un Café con leche")
-} 
-else if (bebida == 3) {precioSeleccionado=precioTe;
+
+    if (cafe >= cafeCafeLeche && leche >= lecheCafeLeche && agua >= aguaPorBebida && vasos >= vasosPorBebida)
+         {
+        console.log("Hay ingredientes para preparar café con leche");
+    }
+    else {
+        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+    }
+}
+else if (bebida ==3) {precioSeleccionado=precioTe;
     console.log ("Seleccionaste un Té")
-} 
-else if (bebida == 4) {precioSeleccionado=precioMilo;
+
+    if (te >= bolsitasTe && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
+        console.log("Hay ingredientes para preparar té");
+    }
+    else {
+        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+    }
+}
+else if (bebida ==4) {precioSeleccionado=precioMilo;
     console.log ("Seleccionaste un Milo")
-} 
-else if (bebida == 5) {precioSeleccionado=precioChocolate;
+
+    if (milo >= cantidadMilo && leche >= lecheMilo && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
+        console.log("Hay ingredientes para preparar Milo");
+    }
+    else {
+        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+    }
+}
+else if (bebida ==5) {precioSeleccionado=precioChocolate;
     console.log ("Seleccionaste un Chocolate")
-} 
+
+    if (chocolate >= cantidadChocolate && leche >= lecheChocolate && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
+        console.log("Hay ingredientes para preparar chocolate");
+    }
+    else {
+        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+    }
+}
