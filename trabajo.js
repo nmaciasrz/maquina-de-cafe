@@ -120,18 +120,18 @@ azucar = azucar - cantidadAzucar;
 
 /* seleccion de bebida */
 
-if (bebida = 1) {precioSeleccionado=precioTinto;
+if (bebida == 1) {precioSeleccionado=precioTinto;
     console.log ("Seleccionaste un tinto")
 } 
-else if (bebida = 2) {precioSeleccionado=precioCafeLeche;
+else if (bebida == 2) {precioSeleccionado=precioCafeLeche;
     console.log ("Seleccionaste un Café con leche")
 } 
-else if (bebida = 3) {precioSeleccionado=precioTe;
-    console.log ("Seleccionaste un Café con leche")
+else if (bebida == 3) {precioSeleccionado=precioTe;
+    console.log ("Seleccionaste un Té")
 } 
-else if (bebida = 4) {precioSeleccionado=precioMilo;
+else if (bebida == 4) {precioSeleccionado=precioMilo;
     console.log ("Seleccionaste un Milo")
 } 
-else if (bebida =5) {precioSeleccionado=precioTe;
+else if (bebida == 5) {precioSeleccionado=precioChocolate;
     console.log ("Seleccionaste un Chocolate")
 } 
