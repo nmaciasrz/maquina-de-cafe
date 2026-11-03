@@ -53,21 +53,21 @@ let precioSeleccionado = 0;
 /* Agua: todas las bebidas consumen la misma cantidad */
 const aguaPorBebida = 0.2; /* Litros */
 
-/* Tinto */
+/* Tinto 1 */
 const cafeTinto = 10; /* Gramos */
 
-/* Cafe con leche */
+/* Cafe con leche 2 */
 const cafeCafeLeche = 10; /* Gramos */
 const lecheCafeLeche = 10; /* Gramos */
 
-/* Te */
+/* Te 3 */
 const bolsitasTe = 1; /* Bolsitas */
 
-/* Milo */
+/* Milo 4 */
 const lecheMilo = 10; /* Gramos */
 const cantidadMilo = 20; /* Gramos */
 
-/* Chocolate */
+/* Chocolate 5 */
 const lecheChocolate = 10; /* Gramos */
 const cantidadChocolate = 20; /* Gramos */
 
@@ -115,3 +115,23 @@ vasos = vasos - vasosPorBebida;
 
 cantidadAzucar = azucarPorBebida;
 azucar = azucar - cantidadAzucar;
+
+
+
+/* seleccion de bebida */
+
+if (bebida = 1) {precioSeleccionado=precioTinto;
+    console.log ("Seleccionaste un tinto")
+} 
+else if (bebida = 2) {precioSeleccionado=precioCafeLeche;
+    console.log ("Seleccionaste un Café con leche")
+} 
+else if (bebida = 3) {precioSeleccionado=precioTe;
+    console.log ("Seleccionaste un Café con leche")
+} 
+else if (bebida = 4) {precioSeleccionado=precioMilo;
+    console.log ("Seleccionaste un Milo")
+} 
+else if (bebida =5) {precioSeleccionado=precioTe;
+    console.log ("Seleccionaste un Chocolate")
+} 
