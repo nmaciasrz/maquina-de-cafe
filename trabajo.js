@@ -120,6 +120,35 @@ azucar = azucar - cantidadAzucar;
 
 /* seleccion de bebida y verificar si hay ingredientes */
 
+
+/*switch*/
+
+switch (bebida) {
+    case 1:
+        precioSeleccionado=precioTinto; 
+        console.log ("Seleccionaste un tinto")
+        break;
+    case 2:
+        precioSeleccionado=precioCafeLeche;
+        console.log ("Seleccionaste un Café con leche")
+        break;
+    case 3:
+        precioSeleccionado=precioTe;
+        console.log ("Seleccionaste un Té")
+        break;
+    case 4:
+        precioSeleccionado=precioMilo;
+        console.log ("Seleccionaste un Milo")
+        break;
+    case 5:
+        precioSeleccionado=precioChocolate;
+        console.log ("Seleccionaste un Chocolate")
+        break;
+    default:
+        console.log("por favor selecciona una bebida del 1 al 5");
+        break;
+}
+
 if (bebida ==1)  {precioSeleccionado=precioTinto;
     console.log ("Seleccionaste un tinto")
 
