@@ -41,7 +41,7 @@ const precioChocolate = 2500;
 
 /* VARIABLES DE LA COMPRA */
 
-let bebida = "";
+let bebida = parseInt(prompt("Selecciona una bebida: 1. Tinto, 2. Café con leche, 3. Té, 4. Milo, 5. Chocolate"));
 let saldo = 0;
 let cambio = 0;
 let azucarSiNo = "";
@@ -126,78 +126,83 @@ azucar = azucar - cantidadAzucar;
 switch (bebida) {
     case 1:
         precioSeleccionado=precioTinto; 
-        console.log ("Seleccionaste un tinto")
+        alert ("Seleccionaste un tinto")
         break;
     case 2:
         precioSeleccionado=precioCafeLeche;
-        console.log ("Seleccionaste un Café con leche")
+        alert ("Seleccionaste un Café con leche")
         break;
     case 3:
         precioSeleccionado=precioTe;
-        console.log ("Seleccionaste un Té")
+        alert ("Seleccionaste un Té")
         break;
     case 4:
         precioSeleccionado=precioMilo;
-        console.log ("Seleccionaste un Milo")
+        alert ("Seleccionaste un Milo")
         break;
     case 5:
         precioSeleccionado=precioChocolate;
-        console.log ("Seleccionaste un Chocolate")
+        alert ("Seleccionaste un Chocolate")
         break;
     default:
-        console.log("por favor selecciona una bebida del 1 al 5");
+        alert("por favor selecciona una bebida del 1 al 5");
         break;
 }
 
-if (bebida ==1)  {precioSeleccionado=precioTinto;
-    console.log ("Seleccionaste un tinto")
+/* ver si hay ingredientes*/
+
+let tintoDisponible = true;
+let cafeLecheDisponible = true;
+let teDisponible = true;
+let miloDisponible = true;
+let chocolateDisponible = true;
+
 
     if (cafe >= cafeTinto && agua >= aguaPorBebida && vasos >= vasosPorBebida) 
         {
-        console.log("Hay ingredientes para preparar tinto");
+        tintoDisponible = true;
     }
     else {
-        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+        tintoDisponible = false;
+        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
-}
-else if (bebida ==2) {precioSeleccionado=precioCafeLeche;
-    console.log ("Seleccionaste un Café con leche")
 
     if (cafe >= cafeCafeLeche && leche >= lecheCafeLeche && agua >= aguaPorBebida && vasos >= vasosPorBebida)
          {
-        console.log("Hay ingredientes para preparar café con leche");
+        cafeLecheDisponible = true;
     }
     else {
-        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+        cafeLecheDisponible = false;
+        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
-}
-else if (bebida ==3) {precioSeleccionado=precioTe;
-    console.log ("Seleccionaste un Té")
 
     if (te >= bolsitasTe && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
-        console.log("Hay ingredientes para preparar té");
+        teDisponible = true;
     }
     else {
-        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+        teDisponible = false;
+        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
-}
-else if (bebida ==4) {precioSeleccionado=precioMilo;
-    console.log ("Seleccionaste un Milo")
 
     if (milo >= cantidadMilo && leche >= lecheMilo && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
-        console.log("Hay ingredientes para preparar Milo");
+        miloDisponible = true;
     }
     else {
-        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+        miloDisponible = false;
+        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
-}
-else if (bebida ==5) {precioSeleccionado=precioChocolate;
-    console.log ("Seleccionaste un Chocolate")
 
     if (chocolate >= cantidadChocolate && leche >= lecheChocolate && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
-        console.log("Hay ingredientes para preparar chocolate");
+        chocolateDisponible = true;
     }
     else {
-        console.log("No hay ingredientes, porfavor selecciona otra bebida");
+        chocolateDisponible = false;
+        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
-}
+
+    
+/*nota 
+paso 1 verificar si hay ingredeintes (completado)
+paso 2 preguntar cual bebida quiere (completado)
+paso 3 quitar de las opciones si hay alguno que no tenga ingredientes (no se como hacerlo)
+etc. */
