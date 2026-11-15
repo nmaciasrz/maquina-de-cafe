@@ -158,48 +158,26 @@ let miloDisponible = true;
 let chocolateDisponible = true;
 
 
-    if (cafe >= cafeTinto && agua >= aguaPorBebida && vasos >= vasosPorBebida) 
+    if (cafe < cafeTinto || agua < aguaPorBebida || vasos < vasosPorBebida) 
         {
-        tintoDisponible = true;
-    }
-    else {
         tintoDisponible = false;
-        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
-
-    if (cafe >= cafeCafeLeche && leche >= lecheCafeLeche && agua >= aguaPorBebida && vasos >= vasosPorBebida)
-         {
-        cafeLecheDisponible = true;
-    }
-    else {
+    
+    if (cafe < cafeCafeLeche || leche < lecheCafeLeche || agua < aguaPorBebida || vasos < vasosPorBebida) {
         cafeLecheDisponible = false;
-        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
 
-    if (te >= bolsitasTe && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
-        teDisponible = true;
-    }
-    else {
+    if (te < bolsitasTe || agua < aguaPorBebida || vasos < vasosPorBebida) {
         teDisponible = false;
-        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
 
-    if (milo >= cantidadMilo && leche >= lecheMilo && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
-        miloDisponible = true;
-    }
-    else {
+    if (milo < cantidadMilo || leche < lecheMilo || agua < aguaPorBebida || vasos < vasosPorBebida) {
         miloDisponible = false;
-        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
 
-    if (chocolate >= cantidadChocolate && leche >= lecheChocolate && agua >= aguaPorBebida && vasos >= vasosPorBebida) {
-        chocolateDisponible = true;
-    }
-    else {
+    if (chocolate < cantidadChocolate || leche < lecheChocolate || agua < aguaPorBebida || vasos < vasosPorBebida) {
         chocolateDisponible = false;
-        console.log ("No hay ingredientes, porfavor selecciona otra bebida");
     }
-
     
 /*nota 
 paso 1 verificar si hay ingredeintes (completado)
