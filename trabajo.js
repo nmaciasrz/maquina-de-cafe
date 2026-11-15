@@ -121,33 +121,7 @@ azucar = azucar - cantidadAzucar;
 /* seleccion de bebida y verificar si hay ingredientes */
 
 
-/*switch*/
 
-switch (bebida) {
-    case 1:
-        precioSeleccionado=precioTinto; 
-        alert ("Seleccionaste un tinto")
-        break;
-    case 2:
-        precioSeleccionado=precioCafeLeche;
-        alert ("Seleccionaste un Café con leche")
-        break;
-    case 3:
-        precioSeleccionado=precioTe;
-        alert ("Seleccionaste un Té")
-        break;
-    case 4:
-        precioSeleccionado=precioMilo;
-        alert ("Seleccionaste un Milo")
-        break;
-    case 5:
-        precioSeleccionado=precioChocolate;
-        alert ("Seleccionaste un Chocolate")
-        break;
-    default:
-        alert("por favor selecciona una bebida del 1 al 5");
-        break;
-}
 
 /* ver si hay ingredientes*/
 
@@ -178,7 +152,82 @@ let chocolateDisponible = true;
     if (chocolate < cantidadChocolate || leche < lecheChocolate || agua < aguaPorBebida || vasos < vasosPorBebida) {
         chocolateDisponible = false;
     }
-    
+
+    /*switch*/
+
+switch (bebida) {
+    case 1:
+        if (tintoDisponible == true) {
+        precioSeleccionado=precioTinto;
+        cafe = cafe - cafeTinto;
+        agua = agua - aguaPorBebida;
+        vasos = vasos - vasosPorBebida;
+        alert ("Seleccionaste un tinto")
+        }
+        else {
+            alert("no hay ingredientes suficientes para preparar un tinto");
+        }
+        break;
+        
+    case 2:
+        precioSeleccionado=precioCafeLeche;
+        if (cafeLecheDisponible == true) {
+            precioSeleccionado=precioCafeLeche;
+            cafe = cafe - cafeCafeLeche;
+            leche = leche - lecheCafeLeche;
+            agua = agua - aguaPorBebida;
+            vasos = vasos - vasosPorBebida;
+            alert ("Seleccionaste un Café con leche")
+        }
+        else {
+            alert("no hay ingredientes suficientes para preparar un Café con leche");
+        }
+        break;
+    case 3:
+        precioSeleccionado=precioTe;
+        if (teDisponible == true) {
+            precioSeleccionado=precioTe;
+            te = te - bolsitasTe;
+            agua = agua - aguaPorBebida;
+            vasos = vasos - vasosPorBebida;
+            alert ("Seleccionaste un Té")
+        }
+        else {
+            alert("no hay ingredientes suficientes para preparar un Té");
+        }
+        break;
+    case 4:
+        precioSeleccionado=precioMilo;
+        if (miloDisponible == true) {
+            precioSeleccionado=precioMilo;
+            milo = milo - cantidadMilo;
+            leche = leche - lecheMilo;
+            agua = agua - aguaPorBebida;
+            vasos = vasos - vasosPorBebida;
+            alert ("Seleccionaste un Milo")
+        }
+        else {
+            alert("no hay ingredientes suficientes para preparar un Milo");
+        }
+        break;
+    case 5:
+        precioSeleccionado=precioChocolate;
+        if (chocolateDisponible == true) {
+            precioSeleccionado=precioChocolate;
+            chocolate = chocolate - cantidadChocolate;
+            leche = leche - lecheChocolate;
+            agua = agua - aguaPorBebida;
+            vasos = vasos - vasosPorBebida;
+            alert ("Seleccionaste un Chocolate")
+        }
+        else {
+            alert("no hay ingredientes suficientes para preparar un Chocolate");
+        }
+        break;
+    default:
+        alert("por favor selecciona una bebida del 1 al 5");
+        break;
+}
 /*nota 
 paso 1 verificar si hay ingredeintes (completado)
 paso 2 preguntar cual bebida quiere (completado)
