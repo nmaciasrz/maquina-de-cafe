@@ -111,11 +111,33 @@ leche = leche - lecheChocolate;
 agua = agua - aguaPorBebida;
 vasos = vasos - vasosPorBebida;
 
-/* descontar el azucar de una bebida */
 
-cantidadAzucar = azucarPorBebida;
-azucar = azucar - cantidadAzucar;
+/* funcion para agregar azucar */
 
+function agregarAzucar() {
+
+    azucarSiNo = prompt("¿Desea agregar azucar? Escriba si o no");
+
+    if (azucarSiNo == "si") {
+
+        if (azucar >= azucarPorBebida) {
+            cantidadAzucar = azucarPorBebida;
+            azucar = azucar - cantidadAzucar;
+            alert("Se agregaron 5 gramos de azucar");
+        }
+        else {
+            alert("No hay suficiente azucar");
+        }
+
+    }
+    else if (azucarSiNo == "no") {
+        cantidadAzucar = 0;
+        alert("No se agrego azucar");
+    }
+    else {
+        alert("Respuesta no valida");
+    }
+}
 
 
 /* seleccion de bebida y verificar si hay ingredientes */
@@ -233,3 +255,9 @@ paso 1 verificar si hay ingredeintes (completado)
 paso 2 preguntar cual bebida quiere (completado)
 paso 3 quitar de las opciones si hay alguno que no tenga ingredientes (no se como hacerlo)
 etc. */
+
+/* preguntar si desea agregar azucar (function) */
+
+if (precioSeleccionado > 0) {
+    agregarAzucar();
+}
