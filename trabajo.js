@@ -41,12 +41,11 @@ const precioChocolate = 2500;
 
 /* VARIABLES DE LA COMPRA */
 
-let bebida = parseInt(prompt("Selecciona una bebida: 1. Tinto, 2. Café con leche, 3. Té, 4. Milo, 5. Chocolate"));
 let saldo = 0;
 let cambio = 0;
-let azucarSiNo = "";
-let cantidadAzucar = 0;
+let bebidaSeleccionada = 0;
 let precioSeleccionado = 0;
+let pagoExitoso = false;
 
 /* CANTIDADES DE INGREDIENTES POR BEBIDA */
 
@@ -78,38 +77,58 @@ const azucarPorBebida = 5; /* Gramos si responde que sí */
 const vasosPorBebida = 1; /* Unidades */
 
 
-/*preparar un tinto*/
+/* descontar ingredientes */
 
-cafe = cafe - cafeTinto;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+function descontarIngredientes(numero) {
 
-/* preparar cafe con leche */
+    switch (numero) {
 
-cafe = cafe - cafeCafeLeche;
-leche = leche - lecheCafeLeche;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+        case 1:
 
-/* preparar un te */
+            cafe = cafe - 10;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
 
-te = te - bolsitasTe;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+            break;
 
-/* preparar un Milo */
+        case 2:
 
-milo = milo - cantidadMilo;
-leche = leche - lecheMilo;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+            cafe = cafe - 10;
+            leche = leche - 10;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
 
-/* preparar un chocolate caliente */
+            break;
 
-chocolate = chocolate - cantidadChocolate;
-leche = leche - lecheChocolate;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+        case 3:
+
+            te = te - 1;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
+
+            break;
+
+        case 4:
+
+            milo = milo - 20;
+            leche = leche - 10;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
+
+            break;
+
+        case 5:
+
+            chocolate = chocolate - 20;
+            leche = leche - 10;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
+
+            break;
+
+    }
+
+}
 
 
 /* funcion para agregar azucar */
@@ -177,7 +196,7 @@ let chocolateDisponible = true;
 
     /*switch*/
 
-switch (bebida) {
+switch (bebidaSeleccionada) {
     case 1:
         if (tintoDisponible == true) {
         precioSeleccionado=precioTinto;
