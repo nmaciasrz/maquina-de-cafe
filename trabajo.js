@@ -207,9 +207,6 @@ switch (bebidaSeleccionada) {
     case "1":
         if (tintoDisponible == true) {
         precioSeleccionado=precioTinto;
-        cafe = cafe - cafeTinto;
-        agua = agua - aguaPorBebida;
-        vasos = vasos - vasosPorBebida;
         alert ("Seleccionaste un tinto")
         }
         else {
@@ -221,10 +218,6 @@ switch (bebidaSeleccionada) {
         precioSeleccionado=precioCafeLeche;
         if (cafeLecheDisponible == true) {
             precioSeleccionado=precioCafeLeche;
-            cafe = cafe - cafeCafeLeche;
-            leche = leche - lecheCafeLeche;
-            agua = agua - aguaPorBebida;
-            vasos = vasos - vasosPorBebida;
             alert ("Seleccionaste un Café con leche")
         }
         else {
@@ -235,9 +228,6 @@ switch (bebidaSeleccionada) {
         precioSeleccionado=precioTe;
         if (teDisponible == true) {
             precioSeleccionado=precioTe;
-            te = te - bolsitasTe;
-            agua = agua - aguaPorBebida;
-            vasos = vasos - vasosPorBebida;
             alert ("Seleccionaste un Té")
         }
         else {
@@ -248,10 +238,6 @@ switch (bebidaSeleccionada) {
         precioSeleccionado=precioMilo;
         if (miloDisponible == true) {
             precioSeleccionado=precioMilo;
-            milo = milo - cantidadMilo;
-            leche = leche - lecheMilo;
-            agua = agua - aguaPorBebida;
-            vasos = vasos - vasosPorBebida;
             alert ("Seleccionaste un Milo")
         }
         else {
@@ -262,10 +248,6 @@ switch (bebidaSeleccionada) {
         precioSeleccionado=precioChocolate;
         if (chocolateDisponible == true) {
             precioSeleccionado=precioChocolate;
-            chocolate = chocolate - cantidadChocolate;
-            leche = leche - lecheChocolate;
-            agua = agua - aguaPorBebida;
-            vasos = vasos - vasosPorBebida;
             alert ("Seleccionaste un Chocolate")
         }
         else {
