@@ -161,7 +161,14 @@ function agregarAzucar() {
 
 /* seleccion de bebida y verificar si hay ingredientes */
 
-
+bebidaSeleccionada = prompt(
+    "¿Qué bebida deseas?\n" +
+    "1. Tinto\n" +
+    "2. Café con leche\n" +
+    "3. Té\n" +
+    "4. Milo\n" +
+    "5. Chocolate"
+);
 
 
 /* ver si hay ingredientes*/
@@ -197,7 +204,7 @@ let chocolateDisponible = true;
     /*switch*/
 
 switch (bebidaSeleccionada) {
-    case 1:
+    case "1":
         if (tintoDisponible == true) {
         precioSeleccionado=precioTinto;
         cafe = cafe - cafeTinto;
@@ -210,7 +217,7 @@ switch (bebidaSeleccionada) {
         }
         break;
         
-    case 2:
+    case "2":
         precioSeleccionado=precioCafeLeche;
         if (cafeLecheDisponible == true) {
             precioSeleccionado=precioCafeLeche;
@@ -224,7 +231,7 @@ switch (bebidaSeleccionada) {
             alert("no hay ingredientes suficientes para preparar un Café con leche");
         }
         break;
-    case 3:
+    case "3":
         precioSeleccionado=precioTe;
         if (teDisponible == true) {
             precioSeleccionado=precioTe;
@@ -237,7 +244,7 @@ switch (bebidaSeleccionada) {
             alert("no hay ingredientes suficientes para preparar un Té");
         }
         break;
-    case 4:
+    case "4":
         precioSeleccionado=precioMilo;
         if (miloDisponible == true) {
             precioSeleccionado=precioMilo;
@@ -251,7 +258,7 @@ switch (bebidaSeleccionada) {
             alert("no hay ingredientes suficientes para preparar un Milo");
         }
         break;
-    case 5:
+    case "5":
         precioSeleccionado=precioChocolate;
         if (chocolateDisponible == true) {
             precioSeleccionado=precioChocolate;
