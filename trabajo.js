@@ -47,6 +47,29 @@ let bebidaSeleccionada = 0;
 let precioSeleccionado = 0;
 let pagoExitoso = false;
 
+
+/* FUNCION PARA INGRESAR DINERO */
+
+function ingresarDinero() {
+
+    let cantidadIngresada = Number(prompt("¿Cuánto dinero desea ingresar?"));
+
+    if (cantidadIngresada > 0) {
+
+        saldo = saldo + cantidadIngresada;
+
+        alert("Dinero ingresado correctamente. Su saldo es de $" + saldo);
+
+    }
+    else {
+
+        alert("Cantidad no valida");
+
+    }
+
+}
+
+
 /* CANTIDADES DE INGREDIENTES POR BEBIDA */
 
 /* Agua: todas las bebidas consumen la misma cantidad */
@@ -170,6 +193,7 @@ bebidaSeleccionada = prompt(
     "5. Chocolate"
 );
 
+ingresarDinero();
 
 /* ver si hay ingredientes*/
 
