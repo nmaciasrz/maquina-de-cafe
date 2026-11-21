@@ -239,7 +239,6 @@ switch (bebidaSeleccionada) {
         break;
         
     case "2":
-        precioSeleccionado=precioCafeLeche;
         if (cafeLecheDisponible == true) {
             precioSeleccionado=precioCafeLeche;
             alert ("Seleccionaste un Café con leche")
@@ -249,7 +248,6 @@ switch (bebidaSeleccionada) {
         }
         break;
     case "3":
-        precioSeleccionado=precioTe;
         if (teDisponible == true) {
             precioSeleccionado=precioTe;
             alert ("Seleccionaste un Té")
@@ -259,7 +257,6 @@ switch (bebidaSeleccionada) {
         }
         break;
     case "4":
-        precioSeleccionado=precioMilo;
         if (miloDisponible == true) {
             precioSeleccionado=precioMilo;
             alert ("Seleccionaste un Milo")
@@ -269,7 +266,6 @@ switch (bebidaSeleccionada) {
         }
         break;
     case "5":
-        precioSeleccionado=precioChocolate;
         if (chocolateDisponible == true) {
             precioSeleccionado=precioChocolate;
             alert ("Seleccionaste un Chocolate")
@@ -303,6 +299,14 @@ if (precioSeleccionado > 0) {
 
 /* preguntar si desea agregar azucar (function) */
 
-if (precioSeleccionado > 0) {
+if (pagoExitoso == true) {
     agregarAzucar();
+
+
+    descontarIngredientes(Number(bebidaSeleccionada));
+
+    saldo = saldo - precioSeleccionado;
+
+    alert("Su bebida está lista. ¡Disfrútela!");
+
 }
