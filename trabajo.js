@@ -282,11 +282,24 @@ switch (bebidaSeleccionada) {
         alert("por favor selecciona una bebida del 1 al 5");
         break;
 }
-/*nota 
-paso 1 verificar si hay ingredeintes (completado)
-paso 2 preguntar cual bebida quiere (completado)
-paso 3 quitar de las opciones si hay alguno que no tenga ingredientes (no se como hacerlo)
-etc. */
+
+/* verificar si el saldo es suficiente */
+
+if (precioSeleccionado > 0) {
+
+    if (saldo < precioSeleccionado) {
+
+        alert("Saldo insuficiente");
+
+    }
+    else {
+
+        pagoExitoso = true;
+        alert("Pago aprobado");
+
+    }
+
+}
 
 /* preguntar si desea agregar azucar (function) */
 
