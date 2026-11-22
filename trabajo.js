@@ -185,8 +185,6 @@ function agregarAzucar() {
     }
 }
 
-ingresarDinero();
-
 /* ver si hay ingredientes*/
 
 let tintoDisponible = true;
@@ -407,6 +405,8 @@ function mostrarCambio(combinacion) {
 function seleccionarBebida(numero) {
 
     bebidaSeleccionada = String(numero);
+    precioSeleccionado = 0;
+    pagoExitoso = false;
 
 switch (bebidaSeleccionada) {
     case "1":
@@ -459,8 +459,10 @@ switch (bebidaSeleccionada) {
         alert("por favor selecciona una bebida del 1 al 5");
         break;
 }
-
+verificarSaldo();
+}
 /* verificar si el saldo es suficiente */
+function verificarSaldo() {
 
 if (precioSeleccionado > 0) {
 
@@ -473,6 +475,7 @@ if (precioSeleccionado > 0) {
 
         pagoExitoso = true;
         alert("Pago aprobado");
+        procesarCompra();
 
     }
 
@@ -480,7 +483,7 @@ if (precioSeleccionado > 0) {
 }
 
 /* preguntar si desea agregar azucar (function) */
-
+function procesarCompra() {
 if (pagoExitoso == true) {
 
     cambio = saldo - precioSeleccionado;
@@ -509,7 +512,7 @@ else {
 
 }
 }
-
+}
 /* botones html */
 
 let botonesBebidas = document.querySelectorAll("[data-select]");
