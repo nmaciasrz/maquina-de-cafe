@@ -225,6 +225,64 @@ let chocolateDisponible = true;
         chocolateDisponible = false;
     }
 
+/* inventario de dinero */
+
+function obtenerInventarioDinero() {
+
+    return [
+
+        {
+            valor: billete20000,
+            cantidad: cantidadBilletes20000,
+            tipo: "billete"
+        },
+
+        {
+            valor: billete10000,
+            cantidad: cantidadBilletes10000,
+            tipo: "billete"
+        },
+
+        {
+            valor: billete5000,
+            cantidad: cantidadBilletes5000,
+            tipo: "billete"
+        },
+
+        {
+            valor: billete2000,
+            cantidad: cantidadBilletes2000,
+            tipo: "billete"
+        },
+
+        {
+            valor: moneda1000,
+            cantidad: cantidadMonedas1000,
+            tipo: "moneda"
+        },
+
+        {
+            valor: moneda500,
+            cantidad: cantidadMonedas500,
+            tipo: "moneda"
+        },
+
+        {
+            valor: moneda200,
+            cantidad: cantidadMonedas200,
+            tipo: "moneda"
+        },
+
+        {
+            valor: moneda100,
+            cantidad: cantidadMonedas100,
+            tipo: "moneda"
+        }
+
+    ];
+
+}
+
     /*switch*/
 
 switch (bebidaSeleccionada) {
