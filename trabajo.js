@@ -181,18 +181,6 @@ function agregarAzucar() {
     }
 }
 
-
-/* seleccion de bebida y verificar si hay ingredientes */
-
-bebidaSeleccionada = prompt(
-    "¿Qué bebida deseas?\n" +
-    "1. Tinto\n" +
-    "2. Café con leche\n" +
-    "3. Té\n" +
-    "4. Milo\n" +
-    "5. Chocolate"
-);
-
 ingresarDinero();
 
 /* ver si hay ingredientes*/
@@ -412,7 +400,9 @@ function mostrarCambio(combinacion) {
     alert(mensajeCambio);
 }
 
-    /*switch*/
+function seleccionarBebida(numero) {
+
+    bebidaSeleccionada = String(numero);
 
 switch (bebidaSeleccionada) {
     case "1":
@@ -483,6 +473,7 @@ if (precioSeleccionado > 0) {
     }
 
 }
+}
 
 /* preguntar si desea agregar azucar (function) */
 
@@ -513,4 +504,20 @@ else {
     alert("Su cambio es de $" + cambio);
 
 }
+}
+
+/* botones html */
+
+let botonesBebidas = document.querySelectorAll("[data-select]");
+
+for (let i = 0; i < botonesBebidas.length; i++) {
+
+    botonesBebidas[i].addEventListener("click", function() {
+
+        let numero = botonesBebidas[i].getAttribute("data-select");
+
+        seleccionarBebida(numero);
+
+    });
+
 }
