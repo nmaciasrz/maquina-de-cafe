@@ -63,7 +63,10 @@ function ingresarDinero() {
         document.getElementById("balance-input").value = "";
 
         alert("Dinero ingresado correctamente. Su saldo es de $" + saldo);
-
+    
+        if (precioSeleccionado > 0) {
+            verificarSaldo();
+        }
     }
     else {
 
@@ -193,27 +196,70 @@ let teDisponible = true;
 let miloDisponible = true;
 let chocolateDisponible = true;
 
+function actualizarInventarioVisual() {
 
-    if (cafe < cafeTinto || agua < aguaPorBebida || vasos < vasosPorBebida) 
-        {
-        tintoDisponible = false;
-    }
-    
-    if (cafe < cafeCafeLeche || leche < lecheCafeLeche || agua < aguaPorBebida || vasos < vasosPorBebida) {
-        cafeLecheDisponible = false;
-    }
+    let stockTinto = Math.min(
+        Math.floor(cafe / cafeTinto),
+        Math.floor(agua / aguaPorBebida),
+        Math.floor(vasos / vasosPorBebida)
+    );
 
-    if (te < bolsitasTe || agua < aguaPorBebida || vasos < vasosPorBebida) {
-        teDisponible = false;
-    }
+    let stockCafeLeche = Math.min(
+        Math.floor(cafe / cafeCafeLeche),
+        Math.floor(leche / lecheCafeLeche),
+        Math.floor(agua / aguaPorBebida),
+        Math.floor(vasos / vasosPorBebida)
+    );
 
-    if (milo < cantidadMilo || leche < lecheMilo || agua < aguaPorBebida || vasos < vasosPorBebida) {
-        miloDisponible = false;
-    }
+    let stockTe = Math.min(
+        Math.floor(te / bolsitasTe),
+        Math.floor(agua / aguaPorBebida),
+        Math.floor(vasos / vasosPorBebida)
+    );
 
-    if (chocolate < cantidadChocolate || leche < lecheChocolate || agua < aguaPorBebida || vasos < vasosPorBebida) {
-        chocolateDisponible = false;
-    }
+    let stockMilo = Math.min(
+        Math.floor(milo / cantidadMilo),
+        Math.floor(leche / lecheMilo),
+        Math.floor(agua / aguaPorBebida),
+        Math.floor(vasos / vasosPorBebida)
+    );
+
+    let stockChocolate = Math.min(
+        Math.floor(chocolate / cantidadChocolate),
+        Math.floor(leche / lecheChocolate),
+        Math.floor(agua / aguaPorBebida),
+        Math.floor(vasos / vasosPorBebida)
+    );
+
+    /* actualizar disponibilidad */
+
+    tintoDisponible = stockTinto > 0;
+    cafeLecheDisponible = stockCafeLeche > 0;
+    teDisponible = stockTe > 0;
+    miloDisponible = stockMilo > 0;
+    chocolateDisponible = stockChocolate > 0;
+
+    /* cantidades en html */
+
+    document.querySelector('[data-product="1"] .shelf__stock b').textContent = stockTinto;
+    document.querySelector('[data-product="2"] .shelf__stock b').textContent = stockCafeLeche;
+    document.querySelector('[data-product="3"] .shelf__stock b').textContent = stockTe;
+    document.querySelector('[data-product="4"] .shelf__stock b').textContent = stockMilo;
+    document.querySelector('[data-product="5"] .shelf__stock b').textContent = stockChocolate;
+
+    /* productos agotados */
+
+    document.querySelector('[data-product="1"]').classList.toggle("is-empty", stockTinto == 0);
+    document.querySelector('[data-product="2"]').classList.toggle("is-empty", stockCafeLeche == 0);
+    document.querySelector('[data-product="3"]').classList.toggle("is-empty", stockTe == 0);
+    document.querySelector('[data-product="4"]').classList.toggle("is-empty", stockMilo == 0);
+    document.querySelector('[data-product="5"]').classList.toggle("is-empty", stockChocolate == 0);
+
+}
+
+/* actualizar inventario visual */
+
+actualizarInventarioVisual();
 
 /* inventario de dinero */
 
@@ -504,9 +550,12 @@ else {
 
     descontarIngredientes(Number(bebidaSeleccionada));
 
+    actualizarInventarioVisual();
+
     saldo = 0;
+    
 
-
+    document.getElementById("credit").textContent = "$" + saldo;
     alert("Su bebida está lista. ¡Disfrútela!");
     alert("Su cambio es de $" + cambio);
 
