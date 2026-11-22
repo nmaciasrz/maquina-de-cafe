@@ -158,12 +158,12 @@ function descontarIngredientes(numero) {
 
 function agregarAzucar() {
 
-    azucarSiNo = prompt("¿Desea agregar azucar? Escriba si o no");
+    let azucarSiNo = prompt("¿Desea agregar azucar? Escriba si o no");
 
     if (azucarSiNo == "si") {
 
         if (azucar >= azucarPorBebida) {
-            cantidadAzucar = azucarPorBebida;
+            let cantidadAzucar = azucarPorBebida;
             azucar = azucar - cantidadAzucar;
             alert("Se agregaron 5 gramos de azucar");
         }
@@ -389,6 +389,29 @@ function descontarDinero(combinacion) {
     }
 }
 
+/* mostrar cambio */
+
+function mostrarCambio(combinacion) {
+
+    let inventario = obtenerInventarioDinero();
+
+    let mensajeCambio = "La máquina devuelve:\n";
+
+    for (let i = 0; i < inventario.length; i++) {
+
+        if (combinacion[i] > 0) {
+
+            mensajeCambio += combinacion[i] + " ";
+
+            mensajeCambio += inventario[i].tipo + "(s) de $";
+
+            mensajeCambio += inventario[i].valor + "\n";
+        }
+    }
+
+    alert(mensajeCambio);
+}
+
     /*switch*/
 
 switch (bebidaSeleccionada) {
@@ -476,6 +499,8 @@ if (pagoExitoso == true) {
 }
 else {
     descontarDinero(combinacionCambio);
+
+    mostrarCambio(combinacionCambio);
 
     agregarAzucar();
 
