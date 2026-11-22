@@ -526,20 +526,30 @@ function mostrarCambio(combinacion) {
     let inventario = obtenerInventarioDinero();
 
     let mensajeCambio = "La máquina devuelve:\n";
+    let mensajeBilletes = "";
+    let mensajeMonedas = "";
 
     for (let i = 0; i < inventario.length; i++) {
 
         if (combinacion[i] > 0) {
 
-            mensajeCambio += combinacion[i] + " ";
+            if (inventario[i].tipo == "billete") {
 
-            mensajeCambio += inventario[i].tipo + "(s) de $";
+                mensajeBilletes += combinacion[i] + " x $" + inventario[i].valor + "\n";
 
-            mensajeCambio += inventario[i].valor + "\n";
+            }
+            else if (inventario[i].tipo == "moneda") {
+
+                mensajeMonedas += combinacion[i] + " x $" + inventario[i].valor + "\n";
+
+            }
+
         }
     }
 
-    alert(mensajeCambio);
+    document.getElementById("bill-output").textContent = mensajeBilletes;
+    document.getElementById("coin-output").textContent = mensajeMonedas;
+    alert(mensajeCambio + "\nBilletes:\n" + (mensajeBilletes || "Ninguno") + "\nMonedas:\n" + (mensajeMonedas || "Ninguna"));
 }
 
 function seleccionarBebida(numero) {
