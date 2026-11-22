@@ -52,11 +52,15 @@ let pagoExitoso = false;
 
 function ingresarDinero() {
 
-    let cantidadIngresada = Number(prompt("¿Cuánto dinero desea ingresar?"));
+    let cantidadIngresada = Number(document.getElementById("balance-input").value);
 
     if (cantidadIngresada > 0) {
 
         saldo = saldo + cantidadIngresada;
+
+        document.getElementById("credit").textContent = "$" + saldo;
+
+        document.getElementById("balance-input").value = "";
 
         alert("Dinero ingresado correctamente. Su saldo es de $" + saldo);
 
@@ -521,3 +525,13 @@ for (let i = 0; i < botonesBebidas.length; i++) {
     });
 
 }
+
+/* conectar formulario de dinero */
+
+document.getElementById("balance-form").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    ingresarDinero();
+
+});
