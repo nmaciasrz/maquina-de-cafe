@@ -283,6 +283,65 @@ function obtenerInventarioDinero() {
 
 }
 
+/* calcular cambio exacto */
+
+function calcularCambio(cantidad) {
+
+    let inventario = obtenerInventarioDinero();
+
+    let combinacion = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    function buscarCombinacion(indice, restante) {
+
+        if (restante === 0) {
+
+            return true;
+
+        }
+
+        if (indice >= inventario.length) {
+
+            return false;
+
+        }
+
+        let dinero = inventario[indice];
+
+        let maximo = Math.min(
+            dinero.cantidad,
+            Math.floor(restante / dinero.valor)
+        );
+
+        for (let i = maximo; i >= 0; i--) {
+
+            combinacion[indice] = i;
+
+            let nuevoRestante = restante - (i * dinero.valor);
+
+            if (buscarCombinacion(indice + 1, nuevoRestante)) {
+
+                return true;
+
+            }
+
+        }
+
+        combinacion[indice] = 0;
+
+        return false;
+
+    }
+
+    if (!buscarCombinacion(0, cantidad)) {
+
+        return null;
+
+    }
+
+    return combinacion;
+
+}
+
     /*switch*/
 
 switch (bebidaSeleccionada) {
