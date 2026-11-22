@@ -41,12 +41,34 @@ const precioChocolate = 2500;
 
 /* VARIABLES DE LA COMPRA */
 
-let bebida = parseInt(prompt("Selecciona una bebida: 1. Tinto, 2. Café con leche, 3. Té, 4. Milo, 5. Chocolate"));
 let saldo = 0;
 let cambio = 0;
-let azucarSiNo = "";
-let cantidadAzucar = 0;
+let bebidaSeleccionada = 0;
 let precioSeleccionado = 0;
+let pagoExitoso = false;
+
+
+/* FUNCION PARA INGRESAR DINERO */
+
+function ingresarDinero() {
+
+    let cantidadIngresada = Number(prompt("¿Cuánto dinero desea ingresar?"));
+
+    if (cantidadIngresada > 0) {
+
+        saldo = saldo + cantidadIngresada;
+
+        alert("Dinero ingresado correctamente. Su saldo es de $" + saldo);
+
+    }
+    else {
+
+        alert("Cantidad no valida");
+
+    }
+
+}
+
 
 /* CANTIDADES DE INGREDIENTES POR BEBIDA */
 
@@ -78,50 +100,70 @@ const azucarPorBebida = 5; /* Gramos si responde que sí */
 const vasosPorBebida = 1; /* Unidades */
 
 
-/*preparar un tinto*/
+/* descontar ingredientes */
 
-cafe = cafe - cafeTinto;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+function descontarIngredientes(numero) {
 
-/* preparar cafe con leche */
+    switch (numero) {
 
-cafe = cafe - cafeCafeLeche;
-leche = leche - lecheCafeLeche;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+        case 1:
 
-/* preparar un te */
+            cafe = cafe - 10;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
 
-te = te - bolsitasTe;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+            break;
 
-/* preparar un Milo */
+        case 2:
 
-milo = milo - cantidadMilo;
-leche = leche - lecheMilo;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+            cafe = cafe - 10;
+            leche = leche - 10;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
 
-/* preparar un chocolate caliente */
+            break;
 
-chocolate = chocolate - cantidadChocolate;
-leche = leche - lecheChocolate;
-agua = agua - aguaPorBebida;
-vasos = vasos - vasosPorBebida;
+        case 3:
+
+            te = te - 1;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
+
+            break;
+
+        case 4:
+
+            milo = milo - 20;
+            leche = leche - 10;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
+
+            break;
+
+        case 5:
+
+            chocolate = chocolate - 20;
+            leche = leche - 10;
+            agua = agua - 0.2;
+            vasos = vasos - 1;
+
+            break;
+
+    }
+
+}
 
 
 /* funcion para agregar azucar */
 
 function agregarAzucar() {
 
-    azucarSiNo = prompt("¿Desea agregar azucar? Escriba si o no");
+    let azucarSiNo = prompt("¿Desea agregar azucar? Escriba si o no");
 
     if (azucarSiNo == "si") {
 
         if (azucar >= azucarPorBebida) {
-            cantidadAzucar = azucarPorBebida;
+            let cantidadAzucar = azucarPorBebida;
             azucar = azucar - cantidadAzucar;
             alert("Se agregaron 5 gramos de azucar");
         }
@@ -142,8 +184,16 @@ function agregarAzucar() {
 
 /* seleccion de bebida y verificar si hay ingredientes */
 
+bebidaSeleccionada = prompt(
+    "¿Qué bebida deseas?\n" +
+    "1. Tinto\n" +
+    "2. Café con leche\n" +
+    "3. Té\n" +
+    "4. Milo\n" +
+    "5. Chocolate"
+);
 
-
+ingresarDinero();
 
 /* ver si hay ingredientes*/
 
@@ -175,15 +225,199 @@ let chocolateDisponible = true;
         chocolateDisponible = false;
     }
 
+/* inventario de dinero */
+
+function obtenerInventarioDinero() {
+
+    return [
+
+        {
+            valor: billete20000,
+            cantidad: cantidadBilletes20000,
+            tipo: "billete"
+        },
+
+        {
+            valor: billete10000,
+            cantidad: cantidadBilletes10000,
+            tipo: "billete"
+        },
+
+        {
+            valor: billete5000,
+            cantidad: cantidadBilletes5000,
+            tipo: "billete"
+        },
+
+        {
+            valor: billete2000,
+            cantidad: cantidadBilletes2000,
+            tipo: "billete"
+        },
+
+        {
+            valor: moneda1000,
+            cantidad: cantidadMonedas1000,
+            tipo: "moneda"
+        },
+
+        {
+            valor: moneda500,
+            cantidad: cantidadMonedas500,
+            tipo: "moneda"
+        },
+
+        {
+            valor: moneda200,
+            cantidad: cantidadMonedas200,
+            tipo: "moneda"
+        },
+
+        {
+            valor: moneda100,
+            cantidad: cantidadMonedas100,
+            tipo: "moneda"
+        }
+
+    ];
+
+}
+
+/* calcular cambio exacto */
+
+function calcularCambio(cantidad) {
+
+    let inventario = obtenerInventarioDinero();
+
+    let combinacion = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    function buscarCombinacion(indice, restante) {
+
+        if (restante === 0) {
+
+            return true;
+
+        }
+
+        if (indice >= inventario.length) {
+
+            return false;
+
+        }
+
+        let dinero = inventario[indice];
+
+        let maximo = Math.min(
+            dinero.cantidad,
+            Math.floor(restante / dinero.valor)
+        );
+
+        for (let i = maximo; i >= 0; i--) {
+
+            combinacion[indice] = i;
+
+            let nuevoRestante = restante - (i * dinero.valor);
+
+            if (buscarCombinacion(indice + 1, nuevoRestante)) {
+
+                return true;
+
+            }
+
+        }
+
+        combinacion[indice] = 0;
+
+        return false;
+
+    }
+
+    if (!buscarCombinacion(0, cantidad)) {
+
+        return null;
+
+    }
+
+    return combinacion;
+
+}
+
+/* descontar dinero */
+
+function descontarDinero(combinacion) {
+
+    let inventario = obtenerInventarioDinero();
+
+    for (let i = 0; i < inventario.length; i++) {
+
+        let cantidadDevuelta = combinacion[i];
+
+        switch (inventario[i].valor) {
+
+            case 20000:
+                cantidadBilletes20000 -= cantidadDevuelta;
+                break;
+
+            case 10000:
+                cantidadBilletes10000 -= cantidadDevuelta;
+                break;
+
+            case 5000:
+                cantidadBilletes5000 -= cantidadDevuelta;
+                break;
+
+            case 2000:
+                cantidadBilletes2000 -= cantidadDevuelta;
+                break;
+
+            case 1000:
+                cantidadMonedas1000 -= cantidadDevuelta;
+                break;
+
+            case 500:
+                cantidadMonedas500 -= cantidadDevuelta;
+                break;
+
+            case 200:
+                cantidadMonedas200 -= cantidadDevuelta;
+                break;
+
+            case 100:
+                cantidadMonedas100 -= cantidadDevuelta;
+                break;
+        }
+    }
+}
+
+/* mostrar cambio */
+
+function mostrarCambio(combinacion) {
+
+    let inventario = obtenerInventarioDinero();
+
+    let mensajeCambio = "La máquina devuelve:\n";
+
+    for (let i = 0; i < inventario.length; i++) {
+
+        if (combinacion[i] > 0) {
+
+            mensajeCambio += combinacion[i] + " ";
+
+            mensajeCambio += inventario[i].tipo + "(s) de $";
+
+            mensajeCambio += inventario[i].valor + "\n";
+        }
+    }
+
+    alert(mensajeCambio);
+}
+
     /*switch*/
 
-switch (bebida) {
-    case 1:
+switch (bebidaSeleccionada) {
+    case "1":
         if (tintoDisponible == true) {
         precioSeleccionado=precioTinto;
-        cafe = cafe - cafeTinto;
-        agua = agua - aguaPorBebida;
-        vasos = vasos - vasosPorBebida;
         alert ("Seleccionaste un tinto")
         }
         else {
@@ -191,55 +425,36 @@ switch (bebida) {
         }
         break;
         
-    case 2:
-        precioSeleccionado=precioCafeLeche;
+    case "2":
         if (cafeLecheDisponible == true) {
             precioSeleccionado=precioCafeLeche;
-            cafe = cafe - cafeCafeLeche;
-            leche = leche - lecheCafeLeche;
-            agua = agua - aguaPorBebida;
-            vasos = vasos - vasosPorBebida;
             alert ("Seleccionaste un Café con leche")
         }
         else {
             alert("no hay ingredientes suficientes para preparar un Café con leche");
         }
         break;
-    case 3:
-        precioSeleccionado=precioTe;
+    case "3":
         if (teDisponible == true) {
             precioSeleccionado=precioTe;
-            te = te - bolsitasTe;
-            agua = agua - aguaPorBebida;
-            vasos = vasos - vasosPorBebida;
             alert ("Seleccionaste un Té")
         }
         else {
             alert("no hay ingredientes suficientes para preparar un Té");
         }
         break;
-    case 4:
-        precioSeleccionado=precioMilo;
+    case "4":
         if (miloDisponible == true) {
             precioSeleccionado=precioMilo;
-            milo = milo - cantidadMilo;
-            leche = leche - lecheMilo;
-            agua = agua - aguaPorBebida;
-            vasos = vasos - vasosPorBebida;
             alert ("Seleccionaste un Milo")
         }
         else {
             alert("no hay ingredientes suficientes para preparar un Milo");
         }
         break;
-    case 5:
-        precioSeleccionado=precioChocolate;
+    case "5":
         if (chocolateDisponible == true) {
             precioSeleccionado=precioChocolate;
-            chocolate = chocolate - cantidadChocolate;
-            leche = leche - lecheChocolate;
-            agua = agua - aguaPorBebida;
-            vasos = vasos - vasosPorBebida;
             alert ("Seleccionaste un Chocolate")
         }
         else {
@@ -250,14 +465,52 @@ switch (bebida) {
         alert("por favor selecciona una bebida del 1 al 5");
         break;
 }
-/*nota 
-paso 1 verificar si hay ingredeintes (completado)
-paso 2 preguntar cual bebida quiere (completado)
-paso 3 quitar de las opciones si hay alguno que no tenga ingredientes (no se como hacerlo)
-etc. */
+
+/* verificar si el saldo es suficiente */
+
+if (precioSeleccionado > 0) {
+
+    if (saldo < precioSeleccionado) {
+
+        alert("Saldo insuficiente");
+
+    }
+    else {
+
+        pagoExitoso = true;
+        alert("Pago aprobado");
+
+    }
+
+}
 
 /* preguntar si desea agregar azucar (function) */
 
-if (precioSeleccionado > 0) {
+if (pagoExitoso == true) {
+
+    cambio = saldo - precioSeleccionado;
+
+    let combinacionCambio = calcularCambio(cambio);
+
+    if (combinacionCambio === null) {
+
+        alert("No hay cambio exacto disponible. Por favor, ingrese la cantidad exacta.");
+
+}
+else {
+    descontarDinero(combinacionCambio);
+
+    mostrarCambio(combinacionCambio);
+
     agregarAzucar();
+
+    descontarIngredientes(Number(bebidaSeleccionada));
+
+    saldo = 0;
+
+
+    alert("Su bebida está lista. ¡Disfrútela!");
+    alert("Su cambio es de $" + cambio);
+
+}
 }
