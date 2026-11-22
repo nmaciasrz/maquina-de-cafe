@@ -167,6 +167,10 @@ function agregarAzucar() {
 
     let azucarSiNo = prompt("¿Desea agregar azucar? Escriba si o no");
 
+    while (azucarSiNo !== "si" && azucarSiNo !== "no") {
+        alert("Respuesta no valida. Por favor, escriba 'si' o 'no'.");
+        azucarSiNo = prompt("¿Desea agregar azucar? Escriba si o no");
+    }
     if (azucarSiNo == "si") {
 
         if (azucar >= azucarPorBebida) {
@@ -180,7 +184,6 @@ function agregarAzucar() {
 
     }
     else if (azucarSiNo == "no") {
-        cantidadAzucar = 0;
         alert("No se agrego azucar");
     }
     else {
@@ -260,6 +263,97 @@ function actualizarInventarioVisual() {
 /* actualizar inventario visual */
 
 actualizarInventarioVisual();
+
+/* mostrar bebida */
+
+function mostrarBebida() {
+
+    let nombreBebida = "";
+
+    switch (Number(bebidaSeleccionada)) {
+
+        case 1:
+            nombreBebida = "Tinto";
+            break;
+
+        case 2:
+            nombreBebida = "Café con leche";
+            break;
+
+        case 3:
+            nombreBebida = "Té";
+            break;
+
+        case 4:
+            nombreBebida = "Milo";
+            break;
+
+        case 5:
+            nombreBebida = "Chocolate";
+            break;
+
+    }
+
+    document.getElementById("dispenser").textContent = nombreBebida;
+
+}
+
+
+/* cancelar compra */
+
+function cancelarCompra() {
+
+    if (saldo > 0) {
+
+        alert("Compra cancelada");
+        devolverSaldo();
+
+    }
+    else if (precioSeleccionado > 0) {
+
+        precioSeleccionado = 0;
+        bebidaSeleccionada = 0;
+        pagoExitoso = false;
+
+        alert("Selección cancelada");
+
+    }
+    else {
+
+        alert("No hay dinero ni compra para cancelar");
+
+    }
+
+}
+
+/* devolver saldo */
+
+function devolverSaldo() {
+
+    if (saldo > 0) {
+
+        let dineroDevuelto = saldo;
+
+        document.getElementById("bill-output").textContent = "$" + dineroDevuelto;
+        document.getElementById("coin-output").textContent = "";
+
+        saldo = 0;
+        precioSeleccionado = 0;
+        bebidaSeleccionada = 0;
+        pagoExitoso = false;
+
+        document.getElementById("credit").textContent = "$" + saldo;
+
+        alert("Se devolvieron $" + dineroDevuelto);
+
+    }
+    else {
+
+        alert("No hay saldo para devolver");
+
+    }
+
+}
 
 /* inventario de dinero */
 
@@ -552,7 +646,12 @@ else {
 
     actualizarInventarioVisual();
 
+    mostrarBebida();
+
     saldo = 0;
+    precioSeleccionado = 0;
+    bebidaSeleccionada = 0;
+    pagoExitoso = false;
     
 
     document.getElementById("credit").textContent = "$" + saldo;
@@ -585,5 +684,20 @@ document.getElementById("balance-form").addEventListener("submit", function(even
     event.preventDefault();
 
     ingresarDinero();
+
+});
+
+/* conectar boton cancelar */
+
+document.querySelector('[data-action="cancel"]').addEventListener("click", function() {
+
+    cancelarCompra();
+
+});
+/* conectar boton devolver cambio */
+
+document.querySelector('[data-action="return-change"]').addEventListener("click", function() {
+
+    devolverSaldo();
 
 });
