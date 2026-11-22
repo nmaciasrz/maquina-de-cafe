@@ -342,6 +342,53 @@ function calcularCambio(cantidad) {
 
 }
 
+/* descontar dinero */
+
+function descontarDinero(combinacion) {
+
+    let inventario = obtenerInventarioDinero();
+
+    for (let i = 0; i < inventario.length; i++) {
+
+        let cantidadDevuelta = combinacion[i];
+
+        switch (inventario[i].valor) {
+
+            case 20000:
+                cantidadBilletes20000 -= cantidadDevuelta;
+                break;
+
+            case 10000:
+                cantidadBilletes10000 -= cantidadDevuelta;
+                break;
+
+            case 5000:
+                cantidadBilletes5000 -= cantidadDevuelta;
+                break;
+
+            case 2000:
+                cantidadBilletes2000 -= cantidadDevuelta;
+                break;
+
+            case 1000:
+                cantidadMonedas1000 -= cantidadDevuelta;
+                break;
+
+            case 500:
+                cantidadMonedas500 -= cantidadDevuelta;
+                break;
+
+            case 200:
+                cantidadMonedas200 -= cantidadDevuelta;
+                break;
+
+            case 100:
+                cantidadMonedas100 -= cantidadDevuelta;
+                break;
+        }
+    }
+}
+
     /*switch*/
 
 switch (bebidaSeleccionada) {
