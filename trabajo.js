@@ -464,13 +464,28 @@ if (precioSeleccionado > 0) {
 /* preguntar si desea agregar azucar (function) */
 
 if (pagoExitoso == true) {
-    agregarAzucar();
 
+    cambio = saldo - precioSeleccionado;
+
+    let combinacionCambio = calcularCambio(cambio);
+
+    if (combinacionCambio === null) {
+
+        alert("No hay cambio exacto disponible. Por favor, ingrese la cantidad exacta.");
+
+}
+else {
+    descontarDinero(combinacionCambio);
+
+    agregarAzucar();
 
     descontarIngredientes(Number(bebidaSeleccionada));
 
-    saldo = saldo - precioSeleccionado;
+    saldo = 0;
+
 
     alert("Su bebida está lista. ¡Disfrútela!");
+    alert("Su cambio es de $" + cambio);
 
+}
 }
